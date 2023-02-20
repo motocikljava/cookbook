@@ -9,7 +9,6 @@ import java.util.ArrayList;
 @Data
 @AllArgsConstructor
 
-
 public class Ingredient {
     private String name;
     private int quantityIng;
