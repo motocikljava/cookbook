@@ -3,12 +3,13 @@ package model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.Map;
-@Data
-@AllArgsConstructor
-public class Recipe {
+@SuperBuilder
+
+public class Recipe extends Ingredient {
     private String name;
     private int minTime;
     private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();

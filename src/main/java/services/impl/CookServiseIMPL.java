@@ -36,7 +36,7 @@ public class CookServiseIMPL {
         for (Ingredient ingredient1 : ingredientMap.values()) {
             ingArrayList.add(ingredient);
         }
-
+        System.out.println("забыл в прошлый раз отправить на гитхаб");
     }
 }
 

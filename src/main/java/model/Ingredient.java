@@ -6,15 +6,14 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 
-@SuperBuilder
+@Data
+@AllArgsConstructor
 
 
-public class Ingredient extends Recipe {
+public class Ingredient {
     private String name;
     private int quantityIng;
     private String units;
 
-    public Ingredient(String name, int minTime, ArrayList<Ingredient> ingredients, String cookingSteps, int id) {
-        super(name, minTime, ingredients, cookingSteps, id);
-    }
+
 }
