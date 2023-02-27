@@ -4,7 +4,6 @@ import model.Ingredient;
 import model.Recipe;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 @Service
@@ -14,34 +13,100 @@ public class CookServiseIMPL implements CookServise {
     private static int recId = 0;
     private static int ingId = 0;
 
-@Override
-    public Recipe addRecipe(Recipe recipe) {
-        final model.Recipe newRecipe = recipeMap.getOrDefault(recId, recipe);
+    @Override
+    public long addRecipe(Recipe recipe) {
+        final Recipe newRecipe = recipeMap.getOrDefault(recId, recipe);
         recipeMap.put(recId++, recipe);
-    return newRecipe;
-}
-@Override
-    public Recipe getRecipe(Recipe recipe) {
-        ArrayList<Recipe> recipeArrayList = new ArrayList<>();
-        for (Recipe recipe1 : recipeMap.values()) {
-            recipeArrayList.add(recipe);
+        return recId;
+    }
+
+
+    @Override
+    public Recipe getRecipe(long id) {
+        for (Recipe val : recipeMap.values()) {
+            Recipe recipe = val.get(id);
+            if (recipe != null) {
+                return recipe;
+            }
         }
-    return recipe;
-}
+        return null;
+    }
+
+    @Override
+    public long addIng(Ingredient ingredient) {
+        Ingredient newIng = ingredientMap.getOrDefault(ingId, ingredient);
+        ingredientMap.put(ingId++, ingredient);
+        return ingId;
+    }
+
+    public Ingredient getIng(long id) {
+        for (Ingredient value : ingredientMap.values()) {
+            Ingredient ingredient = value.get(id);
+            if (ingredient != null) {
+                return ingredient;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Recipe editRec(long id, Recipe recipe) {
+        for (Recipe val1 : recipeMap.values()) {
+            if (recipeMap.containsKey(recId)) {
+                recipeMap.put(recId, recipe);
+                return recipe;
+            }
+        }
+
+        return null;
+    }
+
+
+    @Override
+    public Ingredient editIng(long id, Ingredient ingredient) {
+        for (Ingredient val : ingredientMap.values()) {
+            if (ingredientMap.containsKey(ingId)) {
+                ingredientMap.put(ingId, ingredient);
+                return ingredient;
+            }
+        }
+
+        return null;
+    }
 @Override
+    public boolean delIng(long id) {
+        for (Ingredient val : ingredientMap.values()) {
+            if (ingredientMap.containsKey(id)) {
+                ingredientMap.remove(id);
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean delRec(long id) {
+        for (Recipe val : recipeMap.values()) {
+            if (recipeMap.containsKey(id)) {
+                recipeMap.remove(id);
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+/*@Override
     public Ingredient addIng(Ingredient ingredient) {
         Ingredient newIng = ingredientMap.getOrDefault(ingId, ingredient);
         ingredientMap.put(ingId++, ingredient);
     return newIng;
-}
-@Override
+    @Override
     public Ingredient getIng(Ingredient ingredient) {
         ArrayList<Ingredient> ingArrayList = new ArrayList<>();
         for (Ingredient ingredient1 : ingredientMap.values()) {
             ingArrayList.add(ingredient);
         }
-        System.out.println("забыл в прошлый раз отправить на гитхаб");
     return ingredient;
-}
-}
+
+ */
 

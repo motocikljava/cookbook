@@ -4,11 +4,24 @@ import model.Ingredient;
 import model.Recipe;
 
 public interface CookServise {
-    Recipe addRecipe(Recipe recipe);
+    long addRecipe(Recipe recipe);
 
-    Recipe getRecipe(Recipe recipe);
 
-    Ingredient addIng(Ingredient ingredient);
 
-    Ingredient getIng(Ingredient ingredient);
+    Recipe getRecipe(long id);
+
+    long addIng(Ingredient ingredient);
+
+    //Ingredient getIng(Ingredient ingredient);
+
+    Ingredient getIng(long id);
+
+    Recipe editRec(long id, Recipe recipe);
+
+
+    Ingredient editIng(long id, Ingredient ingredient);
+
+    boolean delIng(long id);
+
+    boolean delRec(long id);
 }

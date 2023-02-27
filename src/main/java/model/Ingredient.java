@@ -15,4 +15,8 @@ public class Ingredient {
     private String units;
 
 
+    public Ingredient get(long id) {
+
+        return get(id);
+    }
 }
