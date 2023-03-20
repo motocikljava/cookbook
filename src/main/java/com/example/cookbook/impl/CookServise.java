@@ -1,7 +1,7 @@
-package services.impl;
+package com.example.cookbook.impl;
 
-import model.Ingredient;
-import model.Recipe;
+import com.example.cookbook.model.Ingredient;
+import com.example.cookbook.model.Recipe;
 
 public interface CookServise {
     long addRecipe(Recipe recipe);

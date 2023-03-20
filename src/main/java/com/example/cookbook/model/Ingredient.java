@@ -1,13 +1,11 @@
-package model;
+package com.example.cookbook.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
-import java.util.ArrayList;
 
 @Data
 @AllArgsConstructor
