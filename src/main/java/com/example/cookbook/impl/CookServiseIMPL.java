@@ -95,18 +95,4 @@ public class CookServiseIMPL implements CookServise {
     }
 }
 
-/*@Override
-    public Ingredient addIng(Ingredient ingredient) {
-        Ingredient newIng = ingredientMap.getOrDefault(ingId, ingredient);
-        ingredientMap.put(ingId++, ingredient);
-    return newIng;
-    @Override
-    public Ingredient getIng(Ingredient ingredient) {
-        ArrayList<Ingredient> ingArrayList = new ArrayList<>();
-        for (Ingredient ingredient1 : ingredientMap.values()) {
-            ingArrayList.add(ingredient);
-        }
-    return ingredient;
-
- */
 
