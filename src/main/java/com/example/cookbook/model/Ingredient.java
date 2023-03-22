@@ -13,9 +13,9 @@ import javax.validation.constraints.Positive;
 
 
 public class Ingredient {
-    @NotBlank
+
     private String name;
-    @Positive
+
     private int quantityIng;
     private String units;
 

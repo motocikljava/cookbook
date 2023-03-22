@@ -6,8 +6,6 @@ import com.example.cookbook.model.Recipe;
 public interface CookServise {
     long addRecipe(Recipe recipe);
 
-
-
     Recipe getRecipe(long id);
 
     long addIng(Ingredient ingredient);
