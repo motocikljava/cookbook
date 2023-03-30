@@ -1,5 +1,6 @@
 package com.example.cookbook.controllers;
 
+import com.example.cookbook.impl.RecipeServiseImpl;
 import com.example.cookbook.model.Ingredient;
 import com.example.cookbook.model.Recipe;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,6 +19,8 @@ import com.example.cookbook.impl.CookServiseIMPL;
 @Tag(name = "работа с рецептами", description =" CRUD  операции с рецептами")
 public class RecipeController {
     private CookServiseIMPL cookServiseIMPL;
+    private RecipeServiseImpl recipeServise;
+
 
     public RecipeController(CookServiseIMPL cookServiseIMPL) {
         this.cookServiseIMPL = cookServiseIMPL;
@@ -41,7 +44,7 @@ public class RecipeController {
     }
     )
     public ResponseEntity<Long> addRec (@RequestBody Recipe recipe) {
-        final long id = cookServiseIMPL.addRecipe(recipe);
+        final long id = recipeServise.addRecipe(recipe);
         return ResponseEntity.ok().body(id);
     }
 //поиск по ид
@@ -63,8 +66,9 @@ public class RecipeController {
 
 }
 )
-private ResponseEntity <Recipe> getRecById (@PathVariable long id) {
-    Recipe rec = cookServiseIMPL.getRecipe(id);
+private ResponseEntity <Recipe> getRecById (@RequestBody Recipe recipe, @PathVariable long id) {
+    Recipe rec = recipeServise.getRecipe(id, recipe);
+
     if (rec == null) {
         ResponseEntity.notFound().build();
     }
@@ -89,7 +93,7 @@ private ResponseEntity <Recipe> getRecById (@PathVariable long id) {
 }
 )
 public ResponseEntity<Void> deleteRecipe (@PathVariable long id) {
-    if (cookServiseIMPL.delRec(id)) {
+    if (recipeServise.delRec(id)) {
         return ResponseEntity.ok().build();
     }
     return ResponseEntity.notFound().build();
@@ -113,7 +117,7 @@ public ResponseEntity<Void> deleteRecipe (@PathVariable long id) {
 }
 )
     private ResponseEntity <Recipe> editRec (@RequestBody Recipe recipe, @PathVariable long id) {
-    Recipe rec = cookServiseIMPL.editRec(id, recipe);
+    Recipe rec = recipeServise.editRec(id, recipe);
     if (rec == null) {
         ResponseEntity.notFound().build();
     }

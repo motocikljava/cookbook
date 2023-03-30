@@ -65,8 +65,8 @@ public class IngridientController {
 
     }
     )
-    private ResponseEntity <Ingredient> getIngridById (@PathVariable long id) {
-        Ingredient ing = cookServiseIMPL.getIng(id);
+    private ResponseEntity <Ingredient> getIngridById (@RequestBody Ingredient ingredient,@PathVariable long id) {
+        Ingredient ing = cookServiseIMPL.getIng(id, ingredient);
         if (ing == null) {
             ResponseEntity.notFound().build();
         }
@@ -124,24 +124,7 @@ public class IngridientController {
         }
         return ResponseEntity.notFound().build();
     }
-    /*@PostMapping
-    public ResponseEntity<Ingredient> addIngrid (@RequestBody Ingredient ingredient) {
-        Ingredient ing = cookServiseIMPL.addIng(ingredient);
-        return ResponseEntity.ok().body(ing);
-    }
 
-
-    @GetMapping("/{ing}")
-    private ResponseEntity <Ingredient> getIngridById (@PathVariable Ingredient ing) {
-        Ingredient ing1 = cookServiseIMPL.getIng(ing);
-        if (ing1 == null) {
-            ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(ing1);
-
-    }
-
-     */
 
 
 }
