@@ -1,4 +1,4 @@
-package model;
+package com.example.cookbook.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Recipe extends Ingredient {
     private String name;
     private int minTime;
-    private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private String cookingSteps;
     static int counterId;
     private int id;
